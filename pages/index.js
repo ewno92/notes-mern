@@ -10,7 +10,7 @@ export default function Home({ notes }) {
       <div className="body-container">
         {notes.map((note) => {
           return (
-            <div className="card">
+            <div className="card" key={note._id}>
               <div className="header">
                 <span className="title">{note.title}</span>
                 <hr />
