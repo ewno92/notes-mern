@@ -3,12 +3,15 @@ import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <nav>
+    <nav id="navbar">
       <Link href="/">
-        <a> link 1</a>
+        <a>home</a>
       </Link>
       <Link href="/">
-        <a> link 2</a>
+        <a> link</a>
+      </Link>
+      <Link href="/new">
+        <a>create new</a>
       </Link>
     </nav>
   );
