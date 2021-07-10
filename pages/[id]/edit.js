@@ -4,7 +4,7 @@ import fetch from "isomorphic-unfetch";
 import { useRouter } from "next/router";
 import NewNote from "../new";
 
-const edit = ({ note }) => {
+const Edit = ({ note }) => {
   const [form, setForm] = useState({
     title: note.title,
     description: note.description,
@@ -68,7 +68,7 @@ const edit = ({ note }) => {
             type="text"
             label="Title"
             name="title"
-            defaultValue={note.title}
+            Value={note.title}
             onChange={handleChange}
           />
 
@@ -76,12 +76,15 @@ const edit = ({ note }) => {
             type="text"
             label="Descriprtion"
             name="description"
-            defaultValue={note.description}
+            Value={note.description}
             onChange={handleChange}
           />
 
           <button type="submit" onClick={editNote}>
             Edit
+          </button>
+          <button type="submit" onClick={() => router.push("/")}>
+            cancel
           </button>
         </div>
       </div>
@@ -89,11 +92,11 @@ const edit = ({ note }) => {
   );
 };
 
-edit.getInitialProps = async ({ query: { id } }) => {
+Edit.getInitialProps = async ({ query: { id } }) => {
   const res = await fetch(`http://localhost:3000/api/notes/${id}`);
   const { data } = await res.json();
 
   return { note: data };
 };
 
-export default edit;
+export default Edit;

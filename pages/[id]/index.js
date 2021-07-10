@@ -2,7 +2,7 @@ import fetch from "isomorphic-unfetch";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
-const index = ({ note }) => {
+const Index = ({ note }) => {
   const [confirm, setConfirm] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const router = useRouter();
@@ -31,11 +31,11 @@ const index = ({ note }) => {
   );
 };
 
-index.getInitialProps = async ({ query: { id } }) => {
+Index.getInitialProps = async ({ query: { id } }) => {
   const res = await fetch(`http://localhost:3000/api/notes/${id}`);
   const { data } = await res.json();
 
   return { note: data };
 };
 
-export default index;
+export default Index;
